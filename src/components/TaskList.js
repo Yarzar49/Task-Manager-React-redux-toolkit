@@ -9,6 +9,7 @@ import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
+import Grid from "@mui/material/Grid"; // Import the Grid component
 
 const TaskList = () => {
   const tasks = useSelector((state) => state.tasks);
@@ -27,43 +28,35 @@ const TaskList = () => {
           Add Task
         </Button>
       </Link>
-      <ul>
+      <Grid container spacing={2} style={{marginTop: 20}}> {/* Wrap the tasks in a Grid container */}
         {tasks.map((task) => (
-          <>
-            <Card sx={{ maxWidth: 345 }} key={task.id} className="mt-3" style={{ marginTop: '12px' }}>
-              {/* <CardMedia
-                sx={{ height: 140 }}
-                image="/static/images/cards/contemplative-reptile.jpg"
-                title="green iguana"
-              /> */}
+          <Grid item xs={12} md={4} key={task.id}> {/* Specify columns for xs and md screens */}
+            <Card sx={{ maxWidth: 345 }} className="mt-3">
               <CardContent>
                 <Typography gutterBottom variant="h5" component="div">
-                  {task.title}
+                  <span>{task.title}</span>
                 </Typography>
-                {/* <Typography variant="body2" color="text.secondary">
-                  Lizards are a widespread group of squamate reptiles, with over
-                  6,000 species, ranging across all continents except Antarctica
-                </Typography> */}
               </CardContent>
               <CardActions>
-              <Link to={`/edit/${task.id}`}>
-                <Button variant="contained" color="primary" size="small">
-                  Edit
+                <Link to={`/edit/${task.id}`}>
+                  <Button variant="contained" color="primary" size="small">
+                    Edit
+                  </Button>
+                </Link>
+                <Button
+                  variant="contained"
+                  color="error"
+                  onClick={() => handleDeleteTask(task.id)}
+                  size="small"
+                  style={{ marginLeft: '10px' }}
+                >
+                  Delete
                 </Button>
-              </Link>
-              <Button
-                variant="contained"
-                color="error"
-                onClick={() => handleDeleteTask(task.id)} size="small" style={{ marginLeft: '10px' }}
-              >
-                Delete
-              </Button>
               </CardActions>
             </Card>
-            
-          </>
+          </Grid>
         ))}
-      </ul>
+      </Grid>
     </div>
   );
 };
