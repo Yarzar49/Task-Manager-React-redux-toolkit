@@ -22,7 +22,7 @@ function App() {
     <div className={`App ${isDarkMode ? 'dark' : 'light'}`}>
      <Container>
      <h1>Task Manager App</h1>
-     <IconButton color="inherit" onClick={toggleMode}>
+     <IconButton className="icon-button" color="inherit" onClick={toggleMode}>
       {isDarkMode ? <Brightness7 /> : <Brightness4 />}
     </IconButton>
       <Routes>

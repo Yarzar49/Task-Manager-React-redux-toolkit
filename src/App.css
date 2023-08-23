@@ -18,3 +18,11 @@
   background-color:#343a40;
   color: #f8f9fa;
 }
+
+.icon-button {
+  transition: transform 0.3s ease-in-out ;
+}
+
+.icon-button:hover {
+  transform: scale(1.1);
+}
