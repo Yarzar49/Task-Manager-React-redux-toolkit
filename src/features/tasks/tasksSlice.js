@@ -12,6 +12,7 @@ const tasksSlice = createSlice({
       const taskIndex = state.findIndex(task => task.id === id);
       if (taskIndex !== -1) {
         state[taskIndex] = { ...state[taskIndex], ...updatedTask };
+        console.warn(state[taskIndex]);
       }
     },
     deleteTask: (state, action) => {

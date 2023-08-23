@@ -17,7 +17,7 @@ const TaskForm = () => {
     if (taskTitle.trim() !== '') {
       dispatch(addTask({ id: Date.now(), title: taskTitle }));
       setTaskTitle('');
-      navigate('/')
+      navigate('/');
     }
   };
 
